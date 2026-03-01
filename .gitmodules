@@ -1,0 +1,9 @@
+[submodule "API5BD2026ETL"]
+	path = API5BD2026ETL
+	url = https://github.com/Warj-Group/API5BD2026ETL.git
+[submodule "API5BD2026Frontend"]
+	path = API5BD2026Frontend
+	url = https://github.com/Warj-Group/API5BD2026Frontend.git
+[submodule "API5BD2026Backend"]
+	path = API5BD2026Backend
+	url = https://github.com/Warj-Group/API5BD2026Backend.git
