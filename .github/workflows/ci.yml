@@ -29,10 +29,10 @@ jobs:
           node-version: 22
 
       - name: Rodar MarkdownLint
-        # Instala o linter globalmente e verifica todos os arquivos .md
         run: |
-          npm install -g markdownlint-cli
-          markdownlint '**/*.md' --ignore 'node_modules'
+              npm install -g markdownlint-cli
+              # Adicionamos os submodules na lista de ignore
+              markdownlint '**/*.md' --ignore 'node_modules' --ignore 'API5BD2026Frontend' --ignore 'API5BD2026Backend' --ignore 'API5BD2026ETL'
 
   sonarcloud:
     name: SonarCloud Scan
