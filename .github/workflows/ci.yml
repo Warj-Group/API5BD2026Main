@@ -1,0 +1,55 @@
+name: Main Docs CI & SonarCloud
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+      - sprint-1
+      - sprint-2
+      - sprint-3
+    types: [opened, synchronize, reopened]
+
+jobs:
+  lint-docs:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Código
+        uses: actions/checkout@v4
+        with:
+          # Para o repo main, é legal inicializar os submodules para o runner saber que eles existem
+          submodules: true 
+
+      - name: Instalar Node.js (Para o Linter)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Rodar MarkdownLint (Via npx)
+        run: |
+          # Usar npx evita a instalação global e o aviso de --ignore-scripts
+          npx --yes markdownlint-cli '**/*.md' \
+            --ignore 'node_modules' \
+            --ignore 'API5BD2026Frontend' \
+            --ignore 'API5BD2026Backend' \
+            --ignore 'API5BD2026ETL'
+
+  sonarcloud:
+    name: SonarCloud Scan
+    needs: lint-docs # Só roda se a documentação estiver no padrão
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: SonarCloud Scan
+        # Atualizado para o SHA que FUNCIONOU nos outros repositórios (o seu snippet estava com o antigo que dava 404)
+        uses: SonarSource/sonarqube-scan-action@bfd4e558cda28cda6b5defafb9232d191be8c203
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
