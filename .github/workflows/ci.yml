@@ -14,71 +14,71 @@ on:
 
 jobs:
   validate-git:
-      name: Validar Git (Branch e Commits)
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v4
-          with:
-            fetch-depth: 0
+    name: Validar Git (Branch e Commits)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-        - name: Checar Nome da Branch
-          run: |
-            BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
-            REGEX="^(main|sprint-[0-9]+)$|^(feature|hotfix|release)\/WARJ-[0-9]+-.+$"
-            if [[ ! $BRANCH =~ $REGEX ]]; then
-              echo "::error::Nome de branch inválido ($BRANCH). Use feature/WARJ-X-nome, hotfix/ ou release/"
-              exit 1
-            fi
-            echo "Nome da branch aprovado: $BRANCH"
+      - name: Checar Nome da Branch
+        run: |
+          BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+          REGEX="^(main|sprint-[0-9]+)$|^(feature|hotfix|release)\/WARJ-[0-9]+-.+$"
+          if [[ ! $BRANCH =~ $REGEX ]]; then
+            echo "::error::Nome de branch inválido ($BRANCH). Use feature/WARJ-X-nome, hotfix/ ou release/"
+            exit 1
+          fi
+          echo "Nome da branch aprovado: $BRANCH"
 
-        - name: Checar Padrão do Último Commit
-          run: |
-            COMMIT_MSG=$(git log -1 --pretty=%B)
-            REGEX="^(feat|fix|doc|style|refactor|test|chore|ci)\/(WARJ-[0-9]+|main|sprint-[0-9]+): .+$"
-            if [[ ! "$COMMIT_MSG" =~ $REGEX ]]; then
-              echo "::error::Mensagem de commit fora do padrão! Ex: feat/WARJ-1: Descrição"
-              exit 1
-            fi
-            echo "Mensagem de commit aprovada!"
+      - name: Checar Padrão do Último Commit
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          REGEX="^(feat|fix|doc|style|refactor|test|chore|ci)\/(WARJ-[0-9]+|main|sprint-[0-9]+): .+$"
+          if [[ ! "$COMMIT_MSG" =~ $REGEX ]]; then
+            echo "::error::Mensagem de commit fora do padrão! Ex: feat/WARJ-1: Descrição"
+            exit 1
+          fi
+          echo "Mensagem de commit aprovada!"
               
-lint-docs:
-  name: Markdown Lint
-  needs: validate-git
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout Código
-      uses: actions/checkout@v4
-      with:
-        # Para o repo main, é legal inicializar os submodules para o runner saber que eles existem
-        submodules: true 
+  lint-docs:
+    name: Markdown Lint
+    needs: validate-git
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Código
+        uses: actions/checkout@v4
+        with:
+          # Para o repo main, é legal inicializar os submodules para o runner saber que eles existem
+          submodules: true 
 
-    - name: Instalar Node.js (Para o Linter)
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
+      - name: Instalar Node.js (Para o Linter)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-    - name: Rodar MarkdownLint (Via npx)
-      run: |
-        # Usar npx evita a instalação global e o aviso de --ignore-scripts
-        npx --yes markdownlint-cli '**/*.md' \
-          --ignore 'node_modules' \
-          --ignore 'API5BD2026Frontend' \
-          --ignore 'API5BD2026Backend' \
-          --ignore 'API5BD2026ETL'
+      - name: Rodar MarkdownLint (Via npx)
+        run: |
+          # Usar npx evita a instalação global e o aviso de --ignore-scripts
+          npx --yes markdownlint-cli '**/*.md' \
+            --ignore 'node_modules' \
+            --ignore 'API5BD2026Frontend' \
+            --ignore 'API5BD2026Backend' \
+            --ignore 'API5BD2026ETL'
 
-sonarcloud:
-  name: SonarCloud Scan
-  needs: lint-docs # Só roda se a documentação estiver no padrão
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout Código
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+  sonarcloud:
+    name: SonarCloud Scan
+    needs: lint-docs # Só roda se a documentação estiver no padrão
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: SonarCloud Scan
-      # Atualizado para o SHA que FUNCIONOU nos outros repositórios (o seu snippet estava com o antigo que dava 404)
-      uses: SonarSource/sonarqube-scan-action@bfd4e558cda28cda6b5defafb9232d191be8c203
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: SonarCloud Scan
+        # Atualizado para o SHA que FUNCIONOU nos outros repositórios
+        uses: SonarSource/sonarqube-scan-action@bfd4e558cda28cda6b5defafb9232d191be8c203
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
