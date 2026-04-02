@@ -1,4 +1,4 @@
-name: Main Docs CI & SonarCloud
+name: Main Docs CI, Patters & SonarCloud
 
 on:
   push:
@@ -13,8 +13,37 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
+    validate-git:
+        name: Validar Git (Branch e Commits)
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+            with:
+              fetch-depth: 0
+
+          - name: Checar Nome da Branch
+            run: |
+              BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+              REGEX="^(main|sprint-[0-9]+)$|^(feature|hotfix|release)\/WARJ-[0-9]+-.+$"
+              if [[ ! $BRANCH =~ $REGEX ]]; then
+                echo "::error::Nome de branch inválido ($BRANCH). Use feature/WARJ-X-nome, hotfix/ ou release/"
+                exit 1
+              fi
+              echo "Nome da branch aprovado: $BRANCH"
+
+          - name: Checar Padrão do Último Commit
+            run: |
+              COMMIT_MSG=$(git log -1 --pretty=%B)
+              REGEX="^(feat|fix|doc|style|refactor|test|chore|ci)\/(WARJ-[0-9]+|main|sprint-[0-9]+): .+$"
+              if [[ ! "$COMMIT_MSG" =~ $REGEX ]]; then
+                echo "::error::Mensagem de commit fora do padrão! Ex: feat/WARJ-1: Descrição"
+                exit 1
+              fi
+              echo "Mensagem de commit aprovada!"
+              
   lint-docs:
     name: Markdown Lint
+    needs: validate-git
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Código
