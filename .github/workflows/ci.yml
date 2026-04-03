@@ -3,7 +3,7 @@ name: Main Docs CI, Patters & SonarCloud
 on:
   push:
     branches:
-      - main
+      - '**'
   pull_request:
     branches:
       - main
@@ -31,7 +31,7 @@ jobs:
           fi
           echo "Nome da branch aprovado: $BRANCH"
 
-      - name: Checar Padrão do Último Commit
+      - name: Checar Padrão do Último Commit  
         run: |
           COMMIT_MSG=$(git log -1 --pretty=%B)
           REGEX="^(feat|fix|doc|style|refactor|test|chore|ci)\/(WARJ-[0-9]+|main|sprint-[0-9]+): .+$"
@@ -39,7 +39,9 @@ jobs:
             echo "::error::Mensagem de commit fora do padrão! Ex: feat/WARJ-1: Descrição"
             exit 1
           fi
-          echo "Mensagem de commit aprovada!"
+          # Extrai apenas a primeira linha da mensagem para o log ficar bonito
+          PRIMEIRA_LINHA=$(echo "$COMMIT_MSG" | head -n 1)
+          echo "Mensagem de commit aprovada: $PRIMEIRA_LINHA"
               
   lint-docs:
     name: Markdown Lint
@@ -66,9 +68,21 @@ jobs:
             --ignore 'API5BD2026Backend' \
             --ignore 'API5BD2026ETL'
 
+  check-links:
+    name: Validar Links Quebrados
+    needs: validate-git
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lychee Link Checker
+        uses: lycheejs/lychee-action@v1.9.3
+        with:
+          fail: true # Quebra a pipeline se achar link morto
+
   sonarcloud:
     name: SonarCloud Scan
     needs: lint-docs # Só roda se a documentação estiver no padrão
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Código

@@ -16,6 +16,7 @@ if %errorlevel% neq 0 (
 echo [1/5] Instalando dependencias (Lint + Husky)...
 call npm init -y
 call npm install --save-dev husky @commitlint/cli @commitlint/config-conventional markdownlint-cli
+call npm install -g markdown-link-check
 
 echo [2/5] Criando configuracao do Commitlint...
 (
@@ -53,10 +54,13 @@ echo [5/5] Configurando Hooks de seguranca...
 (
 echo #!/bin/bash
 echo npx commitlint --edit "$1" ^|^| {
-echo   echo -e "\n\033[0;31m❌ ERRO: Mensagem de commit fora do padrao Warj-Group!\033[0m"
+echo   echo -e "\n\033[0;31mXXXX ERRO: Mensagem de commit fora do padrao Warj-Group\033[0m"
 echo   echo "----------------------------------------------------------------"
 echo   echo "PADRAO: {tipo}/{id_yt}: Descricao"
-echo   echo "EXEMPLO: feat/WARJ-1: Descricao"
+echo   echo "EXEMPLO: doc/WARJ-1: Atualizado README principal"
+echo   echo ""
+echo   echo "TIPOS ACEITOS: feat, fix, doc, style, refactor, test, chore, ci"
+echo   echo "ID YOUTRACK: WARJ-X (onde X e o numero da tarefa)"
 echo   echo "----------------------------------------------------------------"
 echo   exit 1
 echo }
@@ -67,12 +71,16 @@ echo }
 echo #!/bin/bash
 echo BRANCH=$(git rev-parse --abbrev-ref HEAD^)
 echo REGEX="^^(main^|sprint-[0-9]+^)$^|^^(feature^|hotfix^|release^)\/WARJ-[0-9]+-.+$"
+echo.
 echo if [[ ! $BRANCH =~ $REGEX ]]; then
-echo   echo -e "\n\033[0;31m❌ ERRO: Nome da branch fora do padrao Warj-Group!\033[0m"
-echo   echo "PADRAO: {feature^|hotfix^|release^}/WARJ-X-Descricao"
+echo   echo -e "\n\033[0;31mXXXX ERRO: Nome da branch fora do padrao Warj-Group\033[0m"
+echo   echo "PADRAO: {feature|hotfix|release}/WARJ-X-Descricao"
+echo   echo "EXEMPLO: feature/WARJ-1-setup-docs"
+echo   echo ""
 echo   exit 1
 echo fi
-echo echo "📝 Checando formatacao dos arquivos Markdown..."
+echo.
+echo echo "Checando formatacao dos arquivos Markdown..."
 echo npx markdownlint-cli "**/*.md" --ignore node_modules --ignore "API5BD2026*"
 ) > .husky\pre-commit
 

@@ -1,14 +1,17 @@
 #!/bin/bash
 
-# 1. Valida o nome da branch atual
+# Valida o nome da branch atual
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 REGEX="^(main|sprint-[0-9]+)$|^(feature|hotfix|release)\/WARJ-[0-9]+-.+$"
 
 if [[ ! $BRANCH =~ $REGEX ]]; then
-  echo -e "\n\033[0;31m❌ ERRO: Nome da branch fora do padrão Warj-Group!\033[0m"
+  echo -e "\n\033[0;31m ERRO: Nome da branch fora do padrão Warj-Group!\033[0m"
+  echo "PADRÃO: {feature|hotfix|release}/WARJ-X-Descricao"
+  echo "EXEMPLO: feature/WARJ-1-setup-docs"
+  echo ""
   exit 1
 fi
 
 # 2. Valida o Lint do Markdown
-# echo "📝 Checando formatação dos arquivos Markdown..."
-# npx markdownlint-cli "**/*.md" --ignore node_modules --ignore "API5BD2026*"
+echo "Checando formatação dos arquivos Markdown..."
+npx markdownlint-cli "**/*.md" --ignore node_modules --ignore "API5BD2026*"
