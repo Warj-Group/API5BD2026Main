@@ -69,20 +69,27 @@ jobs:
             --ignore 'API5BD2026ETL'
 
   check-links:
-    name: Validar Links Quebrados
-    needs: validate-git
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Código
-        uses: actions/checkout@v4
-        # Não colocamos submodules: true aqui para o Lychee focar apenas na documentação Main
+      name: Validar Links Quebrados
+      needs: validate-git
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout Código
+          uses: actions/checkout@v4
 
-      - name: Lychee Link Checker
-        uses: lycheejs/lychee-action@v2 # <-- Atualizado para a versão principal v2
-        with:
-          fail: true # Quebra a pipeline se achar link morto
-          # Opcional: argumentos para ele focar apenas em arquivos .md do repo atual
-          args: '--verbose --no-progress "**/*.md"'
+        - name: Instalar Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: 20
+
+        - name: Rodar Markdown Link Check (Via npx)
+          run: |
+            # Procura todos os .md e ignora os submodules para focar só no repo Main
+            find . -name "*.md" -type f \
+              -not -path "./node_modules/*" \
+              -not -path "./API5BD2026Frontend/*" \
+              -not -path "./API5BD2026Backend/*" \
+              -not -path "./API5BD2026ETL/*" \
+              -exec npx --yes markdown-link-check -q {} \;
 
   sonarcloud:
     name: SonarCloud Scan
