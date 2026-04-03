@@ -73,11 +73,16 @@ jobs:
     needs: validate-git
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Código
+        uses: actions/checkout@v4
+        # Não colocamos submodules: true aqui para o Lychee focar apenas na documentação Main
+
       - name: Lychee Link Checker
-        uses: lycheejs/lychee-action@v1.9.3
+        uses: lycheejs/lychee-action@v2 # <-- Atualizado para a versão principal v2
         with:
           fail: true # Quebra a pipeline se achar link morto
+          # Opcional: argumentos para ele focar apenas em arquivos .md do repo atual
+          args: '--verbose --no-progress "**/*.md"'
 
   sonarcloud:
     name: SonarCloud Scan
