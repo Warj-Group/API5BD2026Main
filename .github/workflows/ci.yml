@@ -6,10 +6,8 @@ on:
       - '**'
   pull_request:
     branches:
-      - main
-      - sprint-1
-      - sprint-2
-      - sprint-3
+      - 'main'
+      - 'sprint-*'
     types: [opened, synchronize, reopened]
 
 jobs:
