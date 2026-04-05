@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   parserPreset: {
     parserOpts: {
       headerPattern: /^(feat|fix|doc|style|refactor|test|chore|ci)\/(WARJ-\d+|main|sprint-\d+): (.+)$/,
