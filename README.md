@@ -4,3 +4,6 @@ Main API Repository 5th Semester Fatec Technological University - São José dos
 
 Adicionado submodulos, necessário criar a documentação.
 WARJ-10: Adicionado Sprint-1 para inicialiação do projeto
+
+
+Iniciar projeto Readme
