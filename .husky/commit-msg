@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Roda o linter. Se falhar, exibe o guia de uso da Warj-Group
+npx commitlint --edit "$1" || {
+  echo -e "\n\033[0;31m ERRO: Mensagem de commit fora do padrão Warj-Group!\033[0m"
+  echo "----------------------------------------------------------------"
+  echo "PADRÃO: {tipo}/{id_yt}: Descrição"
+  echo "EXEMPLO: doc/WARJ-1: Atualizado README principal"
+  echo ""
+  echo "TIPOS ACEITOS: feat, fix, doc, style, refactor, test, chore, ci"
+  echo "ID YOUTRACK: WARJ-X (onde X é o número da tarefa)"
+  echo "----------------------------------------------------------------"
+  exit 1
+}
