@@ -7,12 +7,47 @@ on:
   pull_request:
     branches:
       - main
-      - sprint-1
-      - sprint-2
-      - sprint-3
+      - sprint-*
     types: [opened, synchronize, reopened]
 
 jobs:
+  validate-git:
+    name: Validar Git (Branch e Commits)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checar Nome da Branch
+        run: |
+          BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+          REGEX="^(main|sprint-[0-9]+)$|^(feature|hotfix|release)\/WARJ-[0-9]+-.+$"
+          if [[ ! $BRANCH =~ $REGEX ]]; then
+            echo "::error::Nome de branch inválido ($BRANCH). Use feature/WARJ-X-nome, hotfix/ ou release/"
+            exit 1
+          fi
+          echo "Nome da branch aprovado: $BRANCH"
+
+      - name: Checar Padrão do Último Commit
+        if: github.event_name == 'push'
+        run: |
+          COMMIT_MSG=$(git log -1 --format=%s) # <-- %s pega só a primeira linha do commit
+
+          # Se for um commit de Merge gerado pelo GitHub, aprova direto
+          if [[ "$COMMIT_MSG" == Merge* ]]; then
+            echo "Commit de merge detectado. Ignorando validação rigorosa."
+            exit 0
+          fi
+
+          REGEX="^(feat|fix|doc|style|refactor|test|chore|ci)\/(WARJ-[0-9]+|main|sprint-[0-9]+): .+$"
+          if [[ ! "$COMMIT_MSG" =~ $REGEX ]]; then
+            echo "::error::Mensagem de commit fora do padrão! Lido: '$COMMIT_MSG'"
+            exit 1
+          fi
+          PRIMEIRA_LINHA=$(echo "$COMMIT_MSG" | head -n 1)
+          echo "Mensagem de commit aprovada: $PRIMEIRA_LINHA"
+
   lint-docs:
     name: Markdown Lint
     runs-on: ubuntu-latest
