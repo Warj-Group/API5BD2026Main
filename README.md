@@ -1,15 +1,14 @@
-[Para a versão em Português do Brasil, clique aqui!](.README-ptbr.md)
-
-<span id="warj-group">
+<span id="warj-group"></span>
 <img width="850" alt="WARJ-Group" src="public/warj/warj_banner2.png" />
 
 ## Indice
 
 <p align="justify">
+    <a href="README_ptbr.md">Portuguese BR Version</a> |
     <a href="#introduction">Introduction</a> |
     <a href="#partner_company">Partner Company: SIATT</a> |
-    <a href="#challenge">Challenge</a> |  
-    <a href="#solution">Solution</a> |    
+    <a href="#challenge">Challenge</a> |
+    <a href="#solution">Solution</a> |
     <a href="#product-backlog">Product Backlog</a> |
     <a href="#fr_nfr">Functional and Non-Functional Requirements</a> |
     <a href="#calendar">Sprint Schedule</a> |
@@ -17,10 +16,10 @@
     <a href="#project-structure">Project Structure</a> |
     <a href="#documentation">Documentation</a> |
     <a href="#team">About the Team</a> |
-    <a href="#technologies">Technologies Used</a> |
+    <a href="#technologies">Technologies Used</a>
 </p>
 
-<span id="introduction">
+<span id="introduction"></span>
 
 ## Introduction
 
@@ -30,7 +29,7 @@ The initiative focuses on building a data analysis solution aimed at generating 
 
 → <a href="#warj-group">Home</a>
 
-<span id="partner_company">
+<span id="partner_company"></span>
 
 ## Partner Company: SIATT
 
@@ -42,7 +41,7 @@ Among its main projects is the **MANSUP (National Anti-Ship Missile)**, a strate
 
 → <a href="#warj-group">Home</a>
 
-<span id="challenge">
+<span id="challenge"></span>
 
 ## Challenge
 
@@ -54,7 +53,7 @@ The challenge involves structuring this data within an analytical environment th
 
 → <a href="#warj-group">Home</a>
 
-<span id="solution">
+<span id="solution"></span>
 
 ## Solution
 
@@ -66,7 +65,7 @@ This makes it possible to visualize indicators in a consolidated manner, identif
 
 → <a href="#warj-group">Home</a>
 
-<span id="product-backlog">
+<span id="product-backlog"></span>
 
 ## Product Backlog
 
@@ -125,7 +124,7 @@ Backlog = "-" indicates that the requirement is not directly associated with a s
 
 → <a href="#warj-group">Home</a>
 
-<span id="calendar">
+<span id="calendar"></span>
 
 ## Sprint Schedule
 
@@ -143,13 +142,14 @@ Backlog = "-" indicates that the requirement is not directly associated with a s
 
 → <a href="#warj-group">Home</a>
 
-<span id="sprint-summary">
+<span id="sprint-summary"></span>
 
 ## Sprint Summaries
+
 <details>
 <summary>🚀 Kick-off</summary>
 
-**Initial Engineering Standards and Technologies**
+### Initial Engineering Standards and Technologies
 
 - PostgreSQL as the main database;
 - Dimensional modeling (Data Warehouse);
@@ -167,7 +167,7 @@ Backlog = "-" indicates that the requirement is not directly associated with a s
 <details>
 <summary>⚙️ Sprint 1</summary>
 
-**Period:** 03/16/2026 to 04/05/2026  
+**Period:** 03/16/2026 to 04/05/2026
 
 **Sprint Objective:** Build the foundation of the analytical solution and provide the first dashboards for project data visualization.
 
@@ -181,28 +181,31 @@ Backlog = "-" indicates that the requirement is not directly associated with a s
 - Historical cost evolution
 - Initial team and effort analysis
 
-**Completed Deliveries**
+### Completed Deliveries
 
 - _To be completed at the end of the sprint._
 
-**Challenges and Obstacles**
+### Challenges and Obstacles
 
 - _To be completed at the end of the sprint._
 
-**Lessons Learned**
+### Lessons Learned
+
 - _To be completed at the end of the sprint._
 
-**Wireframe** ![Sprint 1 Wireframes](public/wireframes/sp1_wireframes.gif)
+### Wireframe
 
-**Burndown**
+![Sprint 1 Wireframes](public/wireframes/sp1_wireframes.gif)
+
+### Burndown
 
 ![Sprint 1 Burndown](public/burndown/sprint1.png)
 
-**SonarCloud / Quality**
+### SonarCloud / Quality
 
 ![Sprint 1 SonarCloud](public/sonarcloud/sprint1.png)
 
-**Evidence**
+### Evidence
 
 - https://youtube.com/YOUR_SPRINT_1_VIDEO
 
@@ -213,7 +216,7 @@ Backlog = "-" indicates that the requirement is not directly associated with a s
 <details>
 <summary>⚙️ Sprint 2</summary>
 
-**Period:** 04/13/2026 to 05/03/2026  
+**Period:** 04/13/2026 to 05/03/2026
 
 **Sprint Objective:** Expand analytical capacity with a focus on costs, materials, and financial indicators.
 
@@ -227,29 +230,31 @@ Backlog = "-" indicates that the requirement is not directly associated with a s
 - Data traceability
 - Identification of deviations
 
-**Completed Deliveries**
+### Completed Deliveries
 
 - _To be completed at the end of the sprint._
 
-**Challenges and Obstacles**
+### Challenges and Obstacles
 
 - _To be completed at the end of the sprint._
 
-**Lessons Learned**
+### Lessons Learned
 
 - _To be completed at the end of the sprint._
 
-**Wireframe** ![Sprint 2 Wireframes](public/wireframes/sp2_wireframes.gif)
+### Wireframe
 
-**Burndown**
+![Sprint 2 Wireframes](public/wireframes/sp2_wireframes.gif)
+
+### Burndown
 
 ![Sprint 2 Burndown](public/burndown/sprint2.png)
 
-**SonarCloud / Quality**
+### SonarCloud / Quality
 
 ![Sprint 2 SonarCloud](public/sonarcloud/sprint2.png)
 
-**Evidence**
+### Evidence
 
 - https://youtube.com/YOUR_SPRINT_2_VIDEO
 
@@ -260,7 +265,7 @@ Backlog = "-" indicates that the requirement is not directly associated with a s
 <details>
 <summary>⚙️ Sprint 3</summary>
 
-**Period:** 05/11/2026 to 05/31/2026  
+**Period:** 05/11/2026 to 05/31/2026
 
 **Sprint Objective:** Finalize analytical features, data governance, exports, and system control.
 
@@ -273,31 +278,31 @@ Backlog = "-" indicates that the requirement is not directly associated with a s
 - Historical material consumption
 - Final adjustments and stability
 
-**Completed Deliveries**
+### Completed Deliveries
 
 - _To be completed at the end of the sprint._
 
-**Challenges and Obstacles**
+### Challenges and Obstacles
 
 - _To be completed at the end of the sprint._
 
-**Lessons Learned**
+### Lessons Learned
 
 - _To be completed at the end of the sprint._
 
-**Wireframe**
+### Wireframe
 
 ![Sprint 3 Wireframes](public/wireframes/sp3_wireframes.gif)
 
-**Burndown**
+### Burndown
 
 ![Sprint 3 Burndown](public/burndown/sprint3.png)
 
-**SonarCloud / Quality**
+### SonarCloud / Quality
 
 ![Sprint 3 SonarCloud](public/sonarcloud/sprint3.png)
 
-**Evidence**
+### Evidence
 
 - https://youtube.com/YOUR_SPRINT_3_VIDEO
 
@@ -307,7 +312,7 @@ Backlog = "-" indicates that the requirement is not directly associated with a s
 
 → <a href="#warj-group">Home</a>
 
-<span id="team">
+<span id="team"></span>
 
 ## About the Team
 
@@ -315,9 +320,9 @@ Backlog = "-" indicates that the requirement is not directly associated with a s
 
 | Member | Role | Socials |
 |---|---|---|
-| <div align="center"><img src="https://github.com/williamantoniazzi.png" width="80"><br><b>William Antoniazzi</b></div> | Scrum Master / Developer | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/williamantoniazzi) [![GitHub](https://img.shields.io/badge/GitHub-111217?logo=github&logoColor=white)](https://github.com/williamantoniazzi) |
-| <div align="center"><img src="https://github.com/allineramos.png" width="80"><br><b>Aline Ramos</b></div> | Product Owner / Developer | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aline-ramos-3186b130/) [![GitHub](https://img.shields.io/badge/GitHub-111217?logo=github&logoColor=white)](https://github.com/allineramos) |
-| <div align="center"><img src="https://github.com/BispoJPM.png" width="80"><br><b>João Pedro</b></div> | Developer | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jo%C3%A3o-pedro-563369181/) [![GitHub](https://img.shields.io/badge/GitHub-111217?logo=github&logoColor=white)](https://github.com/BispoJPM) |
+| <div align="center"><img src="https://github.com/williamantoniazzi.png" width="80" alt="William Antoniazzi"><br><b>William Antoniazzi</b></div> | Scrum Master / Developer | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/williamantoniazzi) [![GitHub](https://img.shields.io/badge/GitHub-111217?logo=github&logoColor=white)](https://github.com/williamantoniazzi) |
+| <div align="center"><img src="https://github.com/allineramos.png" width="80" alt="Aline Ramos"><br><b>Aline Ramos</b></div> | Product Owner / Developer | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aline-ramos-3186b130/) [![GitHub](https://img.shields.io/badge/GitHub-111217?logo=github&logoColor=white)](https://github.com/allineramos) |
+| <div align="center"><img src="https://github.com/BispoJPM.png" width="80" alt="João Pedro"><br><b>João Pedro</b></div> | Developer | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jo%C3%A3o-pedro-563369181/) [![GitHub](https://img.shields.io/badge/GitHub-111217?logo=github&logoColor=white)](https://github.com/BispoJPM) |
 
 </div>
 
@@ -325,10 +330,10 @@ Backlog = "-" indicates that the requirement is not directly associated with a s
 
 → <a href="#warj-group">Home</a>
 
-<span id="technologies">
+<span id="technologies"></span>
 
 ## Technologies Used
 
-<img width="850" alt="WARJ-Group" src="public/warj/tecnologias_adotadas.png" />
+<img width="850" alt="WARJ-Group Technologies" src="public/warj/tecnologias_adotadas.png" />
 
 → <a href="#warj-group">Home</a>

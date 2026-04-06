@@ -1,15 +1,14 @@
-[For the English version, click here!](.README.md)
-
-<span id="warj-group">
+<span id="warj-group"></span>
 <img width="850" alt="WARJ-Group" src="public/warj/warj_banner2.png" />
 
 ## Índice
 
 <p align="justify">
+    <a href="README.md">English Version</a> |
     <a href="#introduction">Introdução</a> |
     <a href="#partner_company">Empresa Parceira: SIATT</a> |
-    <a href="#challenge">Desafio</a> |  
-    <a href="#solution">Solução</a> |   
+    <a href="#challenge">Desafio</a> |
+    <a href="#solution">Solução</a> |
     <a href="#product-backlog">Backlog do Produto</a> |
     <a href="#fr_nfr">Requisitos Funcionais e Não Funcionais</a> |
     <a href="#calendar">Cronograma das Sprints</a> |
@@ -17,10 +16,10 @@
     <a href="#project-structure">Estrutura do Projeto</a> |
     <a href="#documentation">Documentação</a> |
     <a href="#team">Sobre a Equipe</a> |
-    <a href="#technologies">Tecnologias Utilizadas</a> |
+    <a href="#technologies">Tecnologias Utilizadas</a>
 </p>
 
-<span id="introduction">
+<span id="introduction"></span>
 
 ## Introdução
 
@@ -30,7 +29,7 @@ A iniciativa tem como foco a construção de uma solução de análise de dados,
 
 → <a href="#warj-group">Home</a>
 
-<span id="partner_company">
+<span id="partner_company"></span>
 
 ## Empresa Parceira: SIATT
 
@@ -42,7 +41,7 @@ Entre seus principais projetos está o **MANSUP (Míssil Antinavio Nacional)**, 
 
 → <a href="#warj-group">Home</a>
 
-<span id="challenge">
+<span id="challenge"></span>
 
 ## Desafio
 
@@ -54,7 +53,7 @@ O desafio consiste em estruturar esses dados em um ambiente analítico que permi
 
 → <a href="#warj-group">Home</a>
 
-<span id="solution">
+<span id="solution"></span>
 
 ## Solução
 
@@ -66,7 +65,7 @@ Com isso, torna-se possível visualizar indicadores de forma consolidada, identi
 
 → <a href="#warj-group">Home</a>
 
-<span id="product-backlog">
+<span id="product-backlog"></span>
 
 ## Backlog do Produto
 
@@ -125,7 +124,7 @@ Backlog = "-" indica que o requisito não está diretamente associado a uma hist
 
 → <a href="#warj-group">Home</a>
 
-<span id="calendar">
+<span id="calendar"></span>
 
 ## Cronograma das Sprints
 
@@ -143,13 +142,14 @@ Backlog = "-" indica que o requisito não está diretamente associado a uma hist
 
 → <a href="#warj-group">Home</a>
 
-<span id="sprint-summary">
+<span id="sprint-summary"></span>
 
 ## Resumo das Sprints
+
 <details>
 <summary>🚀 Kick-off</summary>
 
-**Padrões Iniciais de Engenharia e Tecnologias**
+### Padrões Iniciais de Engenharia e Tecnologias
 
 - PostgreSQL como banco de dados principal;
 - Modelagem dimensional (Data Warehouse);
@@ -158,9 +158,7 @@ Backlog = "-" indica que o requisito não está diretamente associado a uma hist
 - Estratégia ETL em modelo estrela;
 - CI/CD com GitHub Actions + análise estática + testes automatizados.
 
-**Requisitos relacionados:** 
-
-NFR01, NFR02, NFR03, NFR04, NFR05, NFR06, NFR07
+**Requisitos relacionados:** NFR01, NFR02, NFR03, NFR04, NFR05, NFR06, NFR07
 
 </details>
 
@@ -169,15 +167,11 @@ NFR01, NFR02, NFR03, NFR04, NFR05, NFR06, NFR07
 <details>
 <summary>⚙️ Sprint 1</summary>
 
-**Período:** 16/03/2026 a 05/04/2026  
+**Período:** 16/03/2026 a 05/04/2026
 
-**Objetivo da Sprint:**  
+**Objetivo da Sprint:** Construir a base da solução analítica e disponibilizar os primeiros dashboards para visualização de dados de projetos.
 
-Construir a base da solução analítica e disponibilizar os primeiros dashboards para visualização de dados de projetos.
-
-**Requisitos atendidos:**  
-
-FR01, FR02, FR03, FR04, FR08, FR09, NFR01
+**Requisitos atendidos:** FR01, FR02, FR03, FR04, FR08, FR09, NFR01
 
 **Escopo da Sprint (Resumo):**
 
@@ -187,30 +181,31 @@ FR01, FR02, FR03, FR04, FR08, FR09, NFR01
 - Evolução histórica de custos
 - Análise inicial de equipe e esforço
 
-**Entregas Concluídas**
+### Entregas Concluídas
 
 - _A ser preenchido ao final da sprint._
 
-**Desafios e Obstáculos**
+### Desafios e Obstáculos
 
 - _A ser preenchido ao final da sprint._
 
-**Lições Aprendidas**
+### Lições Aprendidas
+
 - _A ser preenchido ao final da sprint._
 
-**Wireframe** 
+### Wireframe
 
 ![Wireframes Sprint 1](public/wireframes/sp1_wireframes.gif)
 
-**Burndown**
+### Burndown
 
 ![Burndown Sprint 1](public/burndown/sprint1.png)
 
-**SonarCloud / Qualidade**
+### SonarCloud / Qualidade
 
 ![SonarCloud Sprint 1](public/sonarcloud/sprint1.png)
 
-**Evidências**
+### Evidências
 
 - https://youtube.com/SEU_VIDEO_SPRINT_1
 
@@ -221,15 +216,11 @@ FR01, FR02, FR03, FR04, FR08, FR09, NFR01
 <details>
 <summary>⚙️ Sprint 2</summary>
 
-**Período:** 13/04/2026 a 03/05/2026  
+**Período:** 13/04/2026 a 03/05/2026
 
-**Objetivo da Sprint:** 
+**Objetivo da Sprint:** Expandir a capacidade analítica com foco em custos, materiais e indicadores financeiros.
 
-Expandir a capacidade analítica com foco em custos, materiais e indicadores financeiros.
-
-**Requisitos atendidos:** 
-
-FR05, FR06, FR07, FR10, FR11, FR14, FR15, NFR08
+**Requisitos atendidos:** FR05, FR06, FR07, FR10, FR11, FR14, FR15, NFR08
 
 **Escopo da Sprint (Resumo):**
 
@@ -239,31 +230,31 @@ FR05, FR06, FR07, FR10, FR11, FR14, FR15, NFR08
 - Rastreabilidade dos dados
 - Identificação de desvios
 
-**Entregas Concluídas**
+### Entregas Concluídas
 
 - _A ser preenchido ao final da sprint._
 
-**Desafios e Obstáculos**
+### Desafios e Obstáculos
 
 - _A ser preenchido ao final da sprint._
 
-**Lições Aprendidas**
+### Lições Aprendidas
 
 - _A ser preenchido ao final da sprint._
 
-**Wireframe**  
+### Wireframe
 
 ![Wireframes Sprint 2](public/wireframes/sp2_wireframes.gif)
 
-**Burndown**
+### Burndown
 
 ![Burndown Sprint 2](public/burndown/sprint2.png)
 
-**SonarCloud / Qualidade**
+### SonarCloud / Qualidade
 
 ![SonarCloud Sprint 2](public/sonarcloud/sprint2.png)
 
-**Evidências**
+### Evidências
 
 - https://youtube.com/SEU_VIDEO_SPRINT_2
 
@@ -274,15 +265,11 @@ FR05, FR06, FR07, FR10, FR11, FR14, FR15, NFR08
 <details>
 <summary>⚙️ Sprint 3</summary>
 
-**Período:** 11/05/2026 a 31/05/2026  
+**Período:** 11/05/2026 a 31/05/2026
 
-**Objetivo da Sprint:**  
+**Objetivo da Sprint:** Finalizar funcionalidades analíticas, governança de dados, exportações e controle do sistema.
 
-Finalizar funcionalidades analíticas, governança de dados, exportações e controle do sistema.
-
-**Requisitos atendidos:** 
-
-FR12, FR13, NFR09
+**Requisitos atendidos:** FR12, FR13, NFR09
 
 **Escopo da Sprint (Resumo):**
 
@@ -291,31 +278,31 @@ FR12, FR13, NFR09
 - Consumo histórico de materiais
 - Ajustes finais e estabilidade
 
-**Entregas Concluídas**
+### Entregas Concluídas
 
 - _A ser preenchido ao final da sprint._
 
-**Desafios e Obstáculos**
+### Desafios e Obstáculos
 
 - _A ser preenchido ao final da sprint._
 
-**Lições Aprendidas**
+### Lições Aprendidas
 
 - _A ser preenchido ao final da sprint._
 
-**Wireframe**
+### Wireframe
 
 ![Wireframes Sprint 3](public/wireframes/sp3_wireframes.gif)
 
-**Burndown**
+### Burndown
 
 ![Burndown Sprint 3](public/burndown/sprint3.png)
 
-**SonarCloud / Qualidade**
+### SonarCloud / Qualidade
 
 ![SonarCloud Sprint 3](public/sonarcloud/sprint3.png)
 
-**Evidências**
+### Evidências
 
 - https://youtube.com/SEU_VIDEO_SPRINT_3
 
@@ -325,7 +312,7 @@ FR12, FR13, NFR09
 
 → <a href="#warj-group">Home</a>
 
-<span id="team">
+<span id="team"></span>
 
 ## Sobre a Equipe
 
@@ -333,9 +320,9 @@ FR12, FR13, NFR09
 
 | Integrante | Função | Redes |
 |---|---|---|
-| <div align="center"><img src="https://github.com/williamantoniazzi.png" width="80"><br><b>William Antoniazzi</b></div> | Scrum Master / Desenvolvedor | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/williamantoniazzi) [![GitHub](https://img.shields.io/badge/GitHub-111217?logo=github&logoColor=white)](https://github.com/williamantoniazzi) |
-| <div align="center"><img src="https://github.com/allineramos.png" width="80"><br><b>Aline Ramos</b></div> | Product Owner / Desenvolvedora | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aline-ramos-3186b130/) [![GitHub](https://img.shields.io/badge/GitHub-111217?logo=github&logoColor=white)](https://github.com/allineramos) |
-| <div align="center"><img src="https://github.com/BispoJPM.png" width="80"><br><b>João Pedro</b></div> | Desenvolvedor | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jo%C3%A3o-pedro-563369181/) [![GitHub](https://img.shields.io/badge/GitHub-111217?logo=github&logoColor=white)](https://github.com/BispoJPM) |
+| <div align="center"><img src="https://github.com/williamantoniazzi.png" width="80" alt="William Antoniazzi"><br><b>William Antoniazzi</b></div> | Scrum Master / Desenvolvedor | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/williamantoniazzi) [![GitHub](https://img.shields.io/badge/GitHub-111217?logo=github&logoColor=white)](https://github.com/williamantoniazzi) |
+| <div align="center"><img src="https://github.com/allineramos.png" width="80" alt="Aline Ramos"><br><b>Aline Ramos</b></div> | Product Owner / Desenvolvedora | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aline-ramos-3186b130/) [![GitHub](https://img.shields.io/badge/GitHub-111217?logo=github&logoColor=white)](https://github.com/allineramos) |
+| <div align="center"><img src="https://github.com/BispoJPM.png" width="80" alt="João Pedro"><br><b>João Pedro</b></div> | Desenvolvedor | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jo%C3%A3o-pedro-563369181/) [![GitHub](https://img.shields.io/badge/GitHub-111217?logo=github&logoColor=white)](https://github.com/BispoJPM) |
 
 </div>
 
@@ -343,10 +330,10 @@ FR12, FR13, NFR09
 
 → <a href="#warj-group">Home</a>
 
-<span id="technologies">
+<span id="technologies"></span>
 
 ## Tecnologias Utilizadas
 
-<img width="850" alt="WARJ-Group" src="public/warj/tecnologias_adotadas.png" />
+<img width="850" alt="Tecnologias WARJ-Group" src="public/warj/tecnologias_adotadas.png" />
 
 → <a href="#warj-group">Home</a>
