@@ -1,0 +1,12 @@
+#/bin/bash
+npx commitlint --edit "$1" || {
+  echo -e "\n\033[0;31mXXXX ERRO: Mensagem de commit fora do padrao Warj-Group\033[0m"
+  echo "----------------------------------------------------------------"
+  echo "PADRAO: {tipo}/{id_yt}: Descricao"
+  echo "EXEMPLO: feat/WARJ-1: Inicializado repositorio frontend"
+  echo ""
+  echo "TIPOS ACEITOS: feat, fix, doc, style, refactor, test, chore, ci"
+  echo "ID YOUTRACK: WARJ-X (onde X e o numero da tarefa)"
+  echo "----------------------------------------------------------------"
+  exit 1
+}

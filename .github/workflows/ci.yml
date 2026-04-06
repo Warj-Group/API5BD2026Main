@@ -1,20 +1,56 @@
-name: Main Docs CI & SonarCloud
+name: Main Docs CI, Patters & SonarCloud
 
 on:
   push:
     branches:
-      - main
+      - '**'
   pull_request:
     branches:
       - main
-      - sprint-1
-      - sprint-2
-      - sprint-3
+      - sprint-*
     types: [opened, synchronize, reopened]
 
 jobs:
+  validate-git:
+    name: Validar Git (Branch e Commits)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checar Nome da Branch
+        run: |
+          BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+          REGEX="^(main|sprint-[0-9]+)$|^(feature|hotfix|release)\/WARJ-[0-9]+-.+$"
+          if [[ ! $BRANCH =~ $REGEX ]]; then
+            echo "::error::Nome de branch inválido ($BRANCH). Use feature/WARJ-X-nome, hotfix/ ou release/"
+            exit 1
+          fi
+          echo "Nome da branch aprovado: $BRANCH"
+
+      - name: Checar Padrão do Último Commit
+        if: github.event_name == 'push'
+        run: |
+          COMMIT_MSG=$(git log -1 --format=%s) # <-- %s pega só a primeira linha do commit
+
+          # Se for um commit de Merge gerado pelo GitHub, aprova direto
+          if [[ "$COMMIT_MSG" == Merge* ]]; then
+            echo "Commit de merge detectado. Ignorando validação rigorosa."
+            exit 0
+          fi
+
+          REGEX="^(feat|fix|doc|style|refactor|test|chore|ci)\/(WARJ-[0-9]+|main|sprint-[0-9]+): .+$"
+          if [[ ! "$COMMIT_MSG" =~ $REGEX ]]; then
+            echo "::error::Mensagem de commit fora do padrão! Lido: '$COMMIT_MSG'"
+            exit 1
+          fi
+          PRIMEIRA_LINHA=$(echo "$COMMIT_MSG" | head -n 1)
+          echo "Mensagem de commit aprovada: $PRIMEIRA_LINHA"
+
   lint-docs:
     name: Markdown Lint
+    needs: validate-git
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Código
@@ -37,9 +73,33 @@ jobs:
             --ignore 'API5BD2026Backend' \
             --ignore 'API5BD2026ETL'
 
+  check-links:
+      name: Validar Links Quebrados
+      needs: validate-git
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout Código
+          uses: actions/checkout@v4
+
+        - name: Instalar Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: 20
+
+        - name: Rodar Markdown Link Check (Via npx)
+          run: |
+            # Procura todos os .md e ignora os submodules para focar só no repo Main
+            find . -name "*.md" -type f \
+              -not -path "./node_modules/*" \
+              -not -path "./API5BD2026Frontend/*" \
+              -not -path "./API5BD2026Backend/*" \
+              -not -path "./API5BD2026ETL/*" \
+              -exec npx --yes markdown-link-check -q {} \;
+
   sonarcloud:
     name: SonarCloud Scan
     needs: lint-docs # Só roda se a documentação estiver no padrão
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Código
@@ -48,7 +108,7 @@ jobs:
           fetch-depth: 0
 
       - name: SonarCloud Scan
-        # Atualizado para o SHA que FUNCIONOU nos outros repositórios (o seu snippet estava com o antigo que dava 404)
+        # Atualizado para o SHA que FUNCIONOU nos outros repositórios
         uses: SonarSource/sonarqube-scan-action@bfd4e558cda28cda6b5defafb9232d191be8c203
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  

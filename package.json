@@ -1,0 +1,28 @@
+{
+  "name": "api5bd2026main",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Main API Repository 5th Semester Fatec Technological University - São José dos Campos/SP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Warj-Group/API5BD2026Main.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Warj-Group/API5BD2026Main/issues"
+  },
+  "homepage": "https://github.com/Warj-Group/API5BD2026Main#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "husky": "^9.1.7",
+    "markdownlint-cli": "^0.48.0"
+  }
+}
