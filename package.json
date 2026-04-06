@@ -1,6 +1,7 @@
 {
   "name": "api5bd2026main",
   "version": "1.0.0",
+  "type": "module",
   "description": "Main API Repository 5th Semester Fatec Technological University - São José dos Campos/SP",
   "main": "index.js",
   "scripts": {
